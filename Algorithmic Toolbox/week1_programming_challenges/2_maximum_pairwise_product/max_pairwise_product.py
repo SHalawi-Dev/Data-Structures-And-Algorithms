@@ -1,14 +1,19 @@
 # python3
 
 
-def max_pairwise_product(numbers):
-    n = len(numbers)
-    max_product = 0
-    for first in range(n):
-        for second in range(first + 1, n):
-            max_product = max(max_product,
-                numbers[first] * numbers[second])
-
+def max_pairwise_product(numbers:list):
+    max_num = 0
+    second_max_num = 0
+    # We just loop through the array once finding the two maximum numbers and return their product
+    # This is now O(n)
+    for num in numbers:
+        if (num >= max_num):
+            second_max_num = max_num
+            max_num = num
+        elif (num >= second_max_num):
+            second_max_num = num
+    
+    max_product = max_num * second_max_num
     return max_product
 
 
